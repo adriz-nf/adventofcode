@@ -3,6 +3,20 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+
+# aoc token
+token
+
+# data
+*.data
+*.txt
+2021/data
+2020/data
+data/
+# vs code
+.DS_Store
+
 # C extensions
 *.so
 
