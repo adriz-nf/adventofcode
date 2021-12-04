@@ -42,6 +42,7 @@ def check_win(board):
     return False
 
 def sum_board(board):
+    '''flatten out the board and add up unmarked numbers'''
     sum_flat = 0
     flat = [num for row in board for num in row]
     for num in flat:
@@ -65,6 +66,7 @@ def call_number(boards, call, scores):
     return new_boards, scores
 
 def run_bingo(data):
+    '''main function for running the game. Returns list of scores (sum * call) for each game board'''
     boards, bingo_calls = read(data)
     scores = []
     for call in bingo_calls:
