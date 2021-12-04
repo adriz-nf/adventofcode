@@ -14,19 +14,19 @@ def save_new_data(day, year=2021, data_path='data/'):
         return data
 
 
-def test_get_func(**kwargs):
-    print(kwargs)
+#test_answer = '''given result'''
+#test_data = '''given sample data'''
 
-def submit_correct(test_func, test_answer, test_result, real_result, **kwargs):
+def solution_func(input_data):
+    '''the amazing code of the day, either part a or part b'''
+    result = input_data
+    return result
+
+def submit_correct(test_answer, test_result, real_result, **kwargs):
+    '''This code will check that the code works on the sample data and submit the real result only if assert passes'''
     assert (test_answer == test_result), f"Answer {test_result} doesn't match {test_answer}"
-    test_func(real_result, **kwargs)
-    #submit(real_result, **kwargs)
-
-#submit_correct(test_get_func)
-
-def test_func(func, **kwargs):
-    print(func(kwargs))
+    submit(real_result, **kwargs)
 
 
 if __name__ == '__main__':
-    print(test_func(test_get_func(help='help')))
+    submit_correct(test_answer, solution_func(test_data), solution_func(get_data()))
