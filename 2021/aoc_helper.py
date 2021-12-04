@@ -14,8 +14,8 @@ def save_new_data(day, year=2021, data_path='data/'):
         return data
 
 
-#test_answer = '''given result'''
-#test_data = '''given sample data'''
+test_answer = '''given result'''
+test_data = '''given sample data'''
 
 def solution_func(input_data):
     '''the amazing code of the day, either part a or part b'''

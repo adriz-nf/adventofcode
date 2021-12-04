@@ -1,5 +1,4 @@
 from aoc_helper import submit_correct, get_data
-import numpy as np
 
 test_answer = 4512
 test_answer_2 = 1924
@@ -25,48 +24,34 @@ test_data = '''
  2  0 12  3  7
  '''
 
-
-
 def read(data):
-    ''' Takes data input and splits out bingo calls and returns a list of boards'''
+    ''' Takes data input and splits out bingo calls and returns a list of boards with 5 rows'''
     data = [line.replace(',', ' ').split() for line in data.strip().split("\n")]
-    bingo_calls = (data.pop(0))
+    bingo_calls = data.pop(0)
     boards = [data[row+1:row+6] for row in range(0,len(data),6)]
     return boards, bingo_calls
 
 def check_win(board):
+    '''checks both rows and columns for all of single value (i.e. 'X')'''
     for row in board:
         if len(set(row))==1:
             return True
     for col in range(len(board[0])):
-        if len({board[0][col],board[1][col],board[2][col], board[3][col], board[4][col]}) == 1:
+        if len(set([row[col] for row in board])) == 1:
             return True
     return False
 
 def sum_board(board):
     sum_flat = 0
-    flat = [x for sub in board for x in sub]
-    for x in flat:
+    flat = [num for row in board for num in row]
+    for num in flat:
         try:            
-            sum_flat += int(x)
+            sum_flat += int(num)
         except:
             continue
-    
     return sum_flat
 
-def call_number(boards, call):
-    new_boards=[]
-    for board in boards:
-        new_board = []
-        for row in board:
-            new_row = ['X' if item == str(call) else item for item in row]
-            new_board.append(new_row)
-        if check_win(new_board):
-            return sum_board(new_board) * int(call)
-        new_boards.append(new_board)
-    return new_boards
-
-def call_number_part_2(boards, call, scores):
+def call_number(boards, call, scores):
     new_boards=[]
     for board in boards:
         new_board = []
@@ -79,15 +64,12 @@ def call_number_part_2(boards, call, scores):
             new_boards.append(new_board)
     return new_boards, scores
 
-
 def run_bingo(data):
     boards, bingo_calls = read(data)
     scores = []
     for call in bingo_calls:
-        boards, scores = call_number_part_2(boards, call, scores)
-    return scores[0]
-    #return boards
-    
+        boards, scores = call_number(boards, call, scores)
+    return scores
 
 if __name__ == '__main__':
     #submit_correct(test_answer_2, run_bingo(test_data), run_bingo(get_data()))

@@ -1,5 +1,5 @@
 test_input = '/Users/andrewemmett/Projects/adventofcode/2021/day2sample.data'
-#real_input = '/Users/andrewemmett/Projects/adventofcode/2021/day2aocd.data'
+real_input = '/Users/andrewemmett/Projects/adventofcode/2021/day2aocd.data'
 
 from aoc_helper import save_new_data, submit_correct
 
@@ -44,15 +44,6 @@ def day2_2(data):
 
 print(day2_2(test_data))
 
-
-
-#submit_correct(160, day2_2(test_input), day2_2(real_input), day=1)
-
-#print(test_pos(150))
-
-
-
-#submit(my_answer, part="a", day=25, year=2017)
 
 
 
