@@ -32,7 +32,7 @@ def read(data):
     return boards, bingo_calls
 
 def check_win(board):
-    '''checks both rows and columns for all of single value (i.e. 'X')'''
+    '''checks both rows and columns for all of single value (i.e. 0)'''
     for row in board:
         if len(set(row))==1:
             return True
@@ -42,7 +42,8 @@ def check_win(board):
     return False
 
 def call_number(boards, call, scores):
-    '''Checks all boards for the current number call and returns marked incomplete boards and scores of any winners'''
+    '''marks all boards for the current number call using a zero integer
+       returns marked incomplete boards and scores of any winners'''
     new_boards=[]
     for board in boards:
         new_board = []
@@ -50,7 +51,7 @@ def call_number(boards, call, scores):
             new_row = [0 if item == call else item for item in row]
             new_board.append(new_row)
         if check_win(new_board):
-            scores.append(sum([int(num) for row in board for num in row]) * int(call))
+            scores.append(sum([int(num) for row in new_board for num in row]) * int(call))
         else:
             new_boards.append(new_board)
     return new_boards, scores
