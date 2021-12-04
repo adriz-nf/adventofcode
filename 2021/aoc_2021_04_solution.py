@@ -67,7 +67,7 @@ def call_number(boards, call, scores):
     return new_boards, scores
 
 def run_bingo(data):
-    '''main function for running the game. Returns list of scores (sum * call) for each game board'''
+    '''main function for running the game. Returns list of scores (sum * call) for each game board in order of winning'''
     boards, bingo_calls = read(data)
     scores = []
     for call in bingo_calls:
