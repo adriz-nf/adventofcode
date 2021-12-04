@@ -53,6 +53,7 @@ def sum_board(board):
     return sum_flat
 
 def call_number(boards, call, scores):
+    '''Checks all boards for the current number call and returns marked incomplete boards and scores of any winners'''
     new_boards=[]
     for board in boards:
         new_board = []
