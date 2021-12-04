@@ -41,27 +41,16 @@ def check_win(board):
             return True
     return False
 
-def sum_board(board):
-    '''flatten out the board and add up unmarked numbers'''
-    sum_flat = 0
-    flat = [num for row in board for num in row]
-    for num in flat:
-        try:            
-            sum_flat += int(num)
-        except:
-            continue
-    return sum_flat
-
 def call_number(boards, call, scores):
     '''Checks all boards for the current number call and returns marked incomplete boards and scores of any winners'''
     new_boards=[]
     for board in boards:
         new_board = []
         for row in board:
-            new_row = ['X' if item == str(call) else item for item in row]
+            new_row = [0 if item == call else item for item in row]
             new_board.append(new_row)
         if check_win(new_board):
-            scores.append(sum_board(new_board) * int(call))
+            scores.append(sum([int(num) for row in board for num in row]) * int(call))
         else:
             new_boards.append(new_board)
     return new_boards, scores
@@ -77,3 +66,4 @@ def run_bingo(data):
 if __name__ == '__main__':
     #submit_correct(test_answer_2, run_bingo(test_data), run_bingo(get_data()))
     print(run_bingo(test_data))
+
